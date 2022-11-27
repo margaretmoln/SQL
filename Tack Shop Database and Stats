@@ -1,0 +1,16 @@
+--Create a tack shop database
+CREATE TABLE tack_shop (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, price INTEGER);
+INSERT INTO tack_shop VALUES
+(1, "leather conditioner", 15, 20),
+(2, "curry comb", 20, 5),
+(3, "body brush", 20, 8),
+(4, "hoof pick", 30, 10),
+(5, "mane brush", 20, 5);
+
+--Display sum of goods by price
+SELECT * FROM tack_shop;
+SELECT price, SUM(quantity) FROM tack_shop GROUP BY price;
+
+--Display goods that are $10.00 or less 
+SELECT * FROM tack_shop;
+SELECT price, SUM(quantity) FROM tack_shop GROUP BY price;
