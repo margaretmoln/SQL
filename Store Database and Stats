@@ -1,0 +1,18 @@
+--Create a store database
+
+CREATE TABLE storegoods (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, price INTEGER);
+INSERT INTO storegoods VALUES (1, "classic sneaker", 50, 65);
+INSERT INTO storegoods VALUES (2, "chelsea boots", 55, 75); 
+INSERT INTO storegoods VALUES (3, "loafer", 35, 55);
+INSERT INTO storegoods VALUES (4, "high tops", 55, 68);
+INSERT INTO storegoods VALUES (5, "classic mules", 35, 78);
+
+--Display total sum of goods
+SELECT * FROM storegoods; 
+SELECT SUM(quantity) FROM storegoods; 
+
+--Display sum of each good by price
+SELECT price, SUM (quantity) FROM storegoods GROUP BY price; 
+
+--Display the database ordered by price.
+SELECT name FROM storegoods ORDER BY price;
