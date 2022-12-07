@@ -1,0 +1,56 @@
+/* Create table about the people and what they do here */
+
+CREATE TABLE flute_composers (id INTEGER PRIMARY KEY, name TEXT, piece TEXT, country_of_origin TEXT, composer_id INTEGER);
+INSERT into flute_composers VALUES (1, "Gabriel Faure", "Fantasie", "France", 1);
+INSERT into flute_composers VALUES (2, "Cecile Chaminade", "Concertino", "France", 2);
+INSERT into flute_composers VALUES (3, "Georges Enescu", "Cantabile et Presto", "Romania", 3);
+INSERT into flute_composers VALUES (4, "Claude-Paul Taffanel", "Andante Pastoral et Scherzetttino", "France", 4);
+INSERT into flute_composers VALUES (5, "Carl Reinecke", "Undine Sonata", "Germany", 5);
+INSERT into flute_composers VALUES (6, "Wolfgang Amadeus Mozart", "Concerto in G Major", "Austria", 6);
+INSERT into flute_composers VALUES (7, "J.S.Bach", "Partita in A Minor", "Germany", 7 );
+INSERT into flute_composers VALUES (8, "Ian Clarke", "The Great Train Race", "United Kingdom", 8);
+INSERT into flute_composers VALUES (9, "Toru Takemitsu", "Voice", "Japan", 9);
+INSERT into flute_composers VALUES (10, "Sergei Prokofiev", "Flute Sonata Op.94", "Ukraine", 10 );
+
+CREATE TABLE flute_music (id INTEGER PRIMARY KEY, name TEXT, year INTEGER, piece_id INTEGER);
+INSERT into flute_music VALUES (1, "Fantasie", 1898, 1);
+INSERT into flute_music VALUES (2, "Concertino", 1902, 2);
+INSERT into flute_music VALUES (3, "Cantabile et Presto", 1904, 3);
+INSERT into flute_music VALUES (4, "Andante Pastoral et Scherzetttino", 1907, 4);
+INSERT into flute_music VALUES (5, "Undine Sonata", 1882, 5);
+INSERT into flute_music VALUES (6, "Concerto in G Major", 1778, 6);
+INSERT into flute_music VALUES (7, "Partita in A Minor", 1725, 7);
+INSERT into flute_music VALUES (8, "The Great Train Race", 1993, 8);
+INSERT into flute_music VALUES (9, "Voice", 1971, 9);
+INSERT into flute_music VALUES (10, "Flute Sonata Op. 74", 1943, 10);
+
+
+
+SELECT a.name, b.country_of_origin
+FROM flute_composers a
+JOIN flute_composers b
+ON a.composer_id = b.id;
+
+SELECT a.name, a.country_of_origin, b.piece
+FROM flute_composers a
+JOIN flute_composers b
+ON a.composer_id = b.id;
+
+SELECT * FROM flute_composers
+JOIN flute_music
+ON flute_composers.composer_id = flute_music.piece_id;
+
+SELECT * FROM flute_composers
+JOIN flute_music
+ON flute_composers.composer_id = flute_music.piece_id
+WHERE year > 1800;
+
+SELECT flute_composers.name, flute_composers.piece, flute_music.year
+FROM flute_composers
+LEFT OUTER JOIN flute_music
+ON flute_composers.id = flute_music.piece_id;
+
+SELECT a.name, a.country_of_origin, b.name
+FROM flute_composers a
+LEFT OUTER JOIN flute_music b
+ON a.composer_id = b.id;
