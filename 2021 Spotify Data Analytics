@@ -18,5 +18,5 @@ from BIT_DB.spotifydata
 GROUP BY artist_name
 LIMIT 1
 
-4. What's the average danceability for the 10 most popular songs?
+
 
